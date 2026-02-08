@@ -1,1 +1,0 @@
-Established the Views directory to manage the application's presentation layer. This folder will house the .cshtml files, utilizing the Razor engine to render dynamic, responsive content as part of the Phase 2 Full-Stack development goals.
