@@ -1,0 +1,49 @@
+﻿@model CodVeda_FullStack_Intern.Models.Book
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="mb-0">Edit Book Details</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                  
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="IsHidden" />
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Book Title</label>
+                            <input asp-for="Title" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Publisher</label>
+                            <input asp-for="Publisher" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Publish Date (Year)</label>
+                            <input asp-for="PublishDate" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Summary</label>
+                            <textarea asp-for="Summary" class="form-control" rows="4" required></textarea>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
