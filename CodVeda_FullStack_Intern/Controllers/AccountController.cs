@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using CodVeda_FullStack_Intern.Models;
 using CodVeda_FullStack_Intern.Data;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +24,12 @@ namespace CodVeda_FullStack_Intern.Controllers
         [HttpPost]
         public IActionResult Register(User newUser)
         {
+            var emailExists = _context.Users.Any(u => u.Email == newUser.Email);
+            if (emailExists)
+            {
+                ModelState.AddModelError("Email", "This email address is already in our database.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Users.Add(newUser);
@@ -42,6 +48,12 @@ namespace CodVeda_FullStack_Intern.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                ViewBag.ErrorMessage = "Email and password are required";
+                return View();
+            }
+
             var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
 
             if (user != null)
