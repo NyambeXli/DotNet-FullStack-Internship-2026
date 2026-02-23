@@ -1,4 +1,3 @@
-//AppDB C
 using Microsoft.EntityFrameworkCore;
 using CodVeda_FullStack_Intern.Models;
 
@@ -18,7 +17,6 @@ namespace CodVeda_FullStack_Intern.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // 1. Seed the hardcoded Admin
             modelBuilder.Entity<User>().HasData(new User
             {
                 Id = 1,
@@ -27,7 +25,6 @@ namespace CodVeda_FullStack_Intern.Data
                 Password = "&0137Admin"
             });
 
-            // 2. Seed the 3 Books
             modelBuilder.Entity<Book>().HasData(
                 new Book
                 {
